@@ -19794,13 +19794,13 @@ cr.behaviors.solid = function(runtime)
 cr.getObjectRefTable = function () { return [
 	cr.plugins_.AJAX,
 	cr.plugins_.Button,
-	cr.plugins_.Keyboard,
 	cr.plugins_.Function,
+	cr.plugins_.Keyboard,
 	cr.plugins_.Mouse,
 	cr.plugins_.Sprite,
-	cr.plugins_.Text,
-	cr.plugins_.TiledBg,
 	cr.plugins_.C2WebSocket,
+	cr.plugins_.TiledBg,
+	cr.plugins_.Text,
 	cr.behaviors.Pin,
 	cr.behaviors.EightDir,
 	cr.behaviors.Bullet,
@@ -19833,9 +19833,10 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Button.prototype.cnds.OnClicked,
 	cr.plugins_.Function.prototype.acts.CallFunction,
 	cr.plugins_.Function.prototype.cnds.OnFunction,
-	cr.system_object.prototype.cnds.CompareVar,
+	cr.plugins_.Function.prototype.cnds.CompareParam,
 	cr.system_object.prototype.cnds.Every,
 	cr.system_object.prototype.exps.floor,
-	cr.system_object.prototype.exps.random
+	cr.system_object.prototype.exps.random,
+	cr.system_object.prototype.cnds.CompareVar
 ];};
 

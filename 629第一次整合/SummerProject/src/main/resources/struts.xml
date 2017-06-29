@@ -7,9 +7,16 @@
 	<constant name="struts.i18n.encoding" value="utf-8" />
 	<constant name="struts.devMode" value="true" />
 	<package name="process" extends="struts-default">
-
 		
-
+		<action name="loginpage">
+			<result name="success">/summerproject/jsp/NewFile.jsp</result>
+		</action>
+		
+		<action name="login" class="action.login">
+			<result name="success" type="redirect">/summerproject/game/index.html</result>
+			<result name="input">/summerproject/jsp/NewFile.jsp</result>
+		</action>
+		
 		<action name="get_question" class="action.SendQuestion">
 			<result name="success">/summerproject/game/index.html</result>
 		</action>

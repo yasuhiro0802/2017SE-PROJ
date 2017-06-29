@@ -48,6 +48,12 @@ public class AppServiceImpl implements AppService {
 		return userDao.getAllUsers();
 	}
 	
+	public Integer login(User user){
+		if (userDao.findUserByUsernameAndPassword(user) != null)
+			return 1;
+		return 0;
+	}
+	
 	
 	/*
 	 * question
@@ -61,7 +67,7 @@ public class AppServiceImpl implements AppService {
 	public Question getRandomQuestion(){
 		//complete random function
 		//return question No.1
-		Question question=questionDao.getQuestionById(1);
+		Question question=questionDao.getQuestionById(2);
 		return question;
 	}
 

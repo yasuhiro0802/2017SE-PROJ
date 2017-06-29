@@ -23,7 +23,7 @@ public interface AppService {
 
 	public List<User> getAllUsers();
 	
-	
+	public Integer login(User user);
 	/*
 	 * question
 	 */

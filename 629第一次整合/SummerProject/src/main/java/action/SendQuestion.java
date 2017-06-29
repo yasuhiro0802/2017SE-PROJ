@@ -13,11 +13,21 @@ public class SendQuestion extends BaseAction{
 		this.appService = appService;
 	}
 	
+	private String skill;
+	
+	public void setSkill(String skill){
+		this.skill = skill;
+	}
+	
+	public String getSkill(){
+		return skill;
+	}
 	
 	public String execute() throws IOException{
+		System.out.println(skill);
 		Question question = appService.getRandomQuestion();
 		String message = String.valueOf(question.getId())+'|'+question.getQuestion()+'|'+question.getAnswerA()+'|'+
-					question.getAnswerB()+'|'+question.getAnswerC()+'|'+question.getAnswerD()+'|';
+					question.getAnswerB()+'|'+question.getAnswerC()+'|'+question.getAnswerD()+'|'+question.getAnswer()+'|';
 		response().getWriter().write(message);
 		response().flushBuffer();
 		return SUCCESS;

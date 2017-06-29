@@ -15,6 +15,6 @@ public interface UserDao {
 	public User getUserById(int id);
 
 	public List<User> getAllUsers();
-
-    public User login(User user);
+	
+	public User findUserByUsernameAndPassword(User user);
 }
