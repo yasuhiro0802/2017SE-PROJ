@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Struts2 DTD -->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.excludePattern" value="/websocket" />
+	
+	<package name="process" extends="struts-default">
+		
+		<!-- 跳转到登陆界面 -->
+		<action name="loginpage">
+			<result name="success">/summerproject/jsp/LoginPage.jsp</result>
+		</action>
+		
+		<!-- 跳转到注册界面 -->
+		<action name="signuppage">
+			<result name="success">/summerproject/jsp/SignUp.jsp</result>
+		</action>
+		
+		<!-- 跳转到忘记密码界面 -->
+		<action name="forgotpage">
+			<result name="success">/summerproject/jsp/Forgot.jsp</result>
+		</action>
+		
+		<!-- 跳转到主界面 -->
+		<action name="returnhome">
+			<result name="success">/summerproject/jsp/GameMain.jsp</result>
+		</action>
+		
+		<!-- 登录操作 -->
+		<action name="homepage" class="action.login">
+			<result name="success">/summerproject/jsp/GameMain.jsp</result>
+			<result name="input">/summerproject/jsp/LoginPage.jsp</result>
+		</action>
+		
+		<!-- 登出操作 -->
+		<action name="logout" class="action.login" method="logout">
+			<result name="success">/summerproject/jsp/LoginPage.jsp</result>
+		</action>
+		
+		<!-- 注册操作 -->
+		<action name="register" class="action.Register">
+			<result name="success">/summerproject/jsp/SignUpSuccess.jsp</result>
+			<result name="input">/summerproject/jsp/SignUp.jsp</result>
+		</action>
+		
+		<!-- 单人游戏结束并结算操作 -->
+		<action name="single_result" class="action.UpdateGamedata">
+			<result name="success">/summerproject/game/index.jsp</result>
+		</action>
+		
+		<action name="single_over" >
+			<result name="success">/summerproject/jsp/SingleOver.jsp</result>
+		</action>
+		
+	
+		
+		<!-- 游戏中获取题目 -->
+		<action name="get_question" class="action.SendQuestion">
+			<result name="success">/summerproject/game/index.jsp</result>
+		</action>
+
+		<!-- 跳转到单人游戏界面 -->
+		<action name="single_player">
+			<result name="success">/summerproject/jsp/SinglePlayerRoom.jsp</result>
+		</action>		
+		
+		<!-- game get user choice by this action -->
+		<action name="get_choice" class="action.character">
+			<result name="success">/summerproject/game/index.jsp</result>
+		</action>
+		<!-- web set user choice by this action -->
+		<action name="set_choice" class="action.character" method="set_choice">
+			<result name="success">/summerproject/game/index.jsp</result>
+		</action>
+		
+		<!-- jump to the test page of WebSocket -->
+		<action name="socket">
+			<result name="success">/summerproject/jsp/sockettest.jsp</result>
+		</action>
+
+		<action name="*">
+			<result>/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.GameData" table="gamedata">
+		<id name="id" type="int">
+			<column name="id" />
+		</id>
+		<property name="rankpoint" type="int">
+			<column name="rankpoint" />
+		</property>
+		<property name="coin" type="int">
+			<column name="coin" />
+		</property>
+		<property name="singlegame" type="int">
+			<column name="singlegame" />
+		</property>
+		<property name="singlewin" type="int">
+			<column name="singlewin" />
+		</property>
+		<property name="rankgame" type="int">
+			<column name="rankgame" />
+		</property>
+		<property name="rankwin" type="int">
+			<column name="rankwin" />
+		</property>
+		<property name="teamgame" type="int">
+			<column name="teamgame" />
+		</property>
+		<property name="teamwin" type="int">
+			<column name="teamwin" />
+		</property>
+	</class>
+</hibernate-mapping>
