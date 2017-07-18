@@ -148,7 +148,6 @@ public class AppServiceImpl implements AppService {
 	} 
 	
 	public GameData getGamedataById(int id){
-		System.out.println("get data by id");
 		return gamedataDao.getGameDataById(id);
 	}
 	

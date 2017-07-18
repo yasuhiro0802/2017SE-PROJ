@@ -33,7 +33,10 @@ public class RoomAction extends BaseAction{
 			roomList.get(roomId).setUserid_1(0);
 		else
 			roomList.get(roomId).setUserid_2(0);
-		roomList.get(roomId).setStatus("busy");
+		if(roomList.get(roomId).getStatus().equals("wait"))
+			roomList.get(roomId).setStatus("empty");
+		else
+			roomList.get(roomId).setStatus("wait");
 		return SUCCESS;
 	}
 	
@@ -113,28 +116,23 @@ public class RoomAction extends BaseAction{
 	}
 	
 	public void ClearRoom(int roomId){
-		System.out.println("clear room");
 		roomList.get(roomId).setStatus("empty");
 		roomList.get(roomId).setUserid_1(0);
 		roomList.get(roomId).setUserid_2(0);
 	}
 	
 	public int RankPoint(int correct,int wrong,String result){
-		System.out.println("room action RankPoint1");
 		int roomId = (int)session().getAttribute("roomId");
 		GameData player = (GameData)session().getAttribute("gamedata");
 		int id2 = (int)session().getAttribute("player2");
 		ClearRoom(roomId);
-		System.out.println(id2);
-		System.out.println(player.getId());
+
 		GameData player2 = appService.getGamedataById(id2); 
-		
-		System.out.println("room action RankPoint2");
+
 		double diff = player.getRankpoint() - player2.getRankpoint();
 
 		double point = Math.sqrt(Math.abs(diff));
 
-		System.out.println("room action RankPoint3");
 		if(result.equals("win")){
 			if(diff>0)
 				point = diff*(correct*point-wrong);

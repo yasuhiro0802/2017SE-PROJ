@@ -114,19 +114,30 @@
 			<result name="success">/summerproject/game/index.jsp</result>
 		</action>
 		
-		<!-- jump to the test page of WebSocket -->
+		<!-- jump to the test page of WebSocket here are test methods -->
 		
 		<action name="socket" class="room">
 			<result name="success">/summerproject/jsp/sockettest.jsp</result>
 		</action>
 		<action name="selectroom">
-			<result name="success">/summerproject/jsp/sockethomepage.jsp</result>
+			<result name="success">/summerproject/jsp/RoomSelect.jsp</result>
+		</action>
+		<action name="prepare" class="roomprepare">
+			<result name="success" type="redirect">refresh</result>
+		</action>
+		<action name="refresh" class="roomprepare" method="refresh">
+			<result name="success">/summerproject/jsp/RoomPrepare.jsp</result>
+		</action>
+		<action name="quitRoom" class="action.RoomAction" method="quit">
+			<result name="success" type="redirect">selectroom</result>
+		</action>
+		<action name="start" class="roomprepare" method="start">
+			<result name="success" type="redirect">refresh</result>
 		</action>
 		
-		<action name="test" class="test">
-			<result name="success">/summerproject/jsp/GameMain.jsp</result>
+		<action name="roomtest" class="action.set_rank_setting" method="roomtest">
+			<result name="success">/summerproject/rank/index.jsp</result>
 		</action>
-		
 		
 		
 		<!-- Admin -->

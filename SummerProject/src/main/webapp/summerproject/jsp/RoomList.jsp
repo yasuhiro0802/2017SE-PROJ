@@ -116,7 +116,7 @@
 	function getIntoRoom(){
 		var roomId = document.getElementById("roomId").value;
 		var character = document.getElementById("character").value;
-		jsPost('set_rank_setting',{'roomId' : roomId , 'character' : character});
+		jsPost('set_rank_setting',{'roomId' : roomId , 'character' : character , 'mode' : 'rank'});
 	}
 	var jsPost = function(action, values) {
 		  var id = Math.random();

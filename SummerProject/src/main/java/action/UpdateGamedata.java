@@ -67,9 +67,7 @@ public String UpdateRank(){
 		String mode = (String)session().getAttribute("mode");
 		System.out.println(mode);
 		if(mode.equals("rank")){                //排位模式
-			System.out.println("rank");
 			int rankpoint = roomAction.RankPoint(num-wrong,wrong,result);
-			System.out.println(rankpoint);
 			gamedata.setRankgame(gamedata.getRankgame()+1);
 			
 			if(gamedata.getRankpoint()+rankpoint<=0){
@@ -98,7 +96,7 @@ public String UpdateRank(){
 			return SUCCESS;
 		}
 		else{                                                                   //一般模式
-			System.out.println("team");
+
 			roomAction.ClearRoom((int)session().getAttribute("roomId"));
 			
 			gamedata.setTeamgame(gamedata.getTeamgame()+1);
@@ -124,11 +122,12 @@ public String UpdateRank(){
 		}
 	}
 
-public String GetMode(){
-		if(session().getAttribute("mode").toString().equals("rank")){
+	/*public String GetMode(){
+		if(((String)session().getAttribute("mode")).equals("rank")){
 			return "rank";
 		}
-		else return SUCCESS;
+		else 
+			return SUCCESS;
 		
-		}
+	}*/
 }
