@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.GameData" table="gamedata">
+		<id name="id" type="int">
+			<column name="id" />
+		</id>
+		<property name="rankpoint" type="int">
+			<column name="rankpoint" />
+		</property>
+		<property name="coin" type="int">
+			<column name="coin" />
+		</property>
+		<property name="singlegame" type="int">
+			<column name="singlegame" />
+		</property>
+		<property name="singlewin" type="int">
+			<column name="singlewin" />
+		</property>
+		<property name="rankgame" type="int">
+			<column name="rankgame" />
+		</property>
+		<property name="rankwin" type="int">
+			<column name="rankwin" />
+		</property>
+		<property name="teamgame" type="int">
+			<column name="teamgame" />
+		</property>
+		<property name="teamwin" type="int">
+			<column name="teamwin" />
+		</property>
+		<property name="item1" type="int">
+			<column name="item1" />
+		</property>
+		<property name="item2" type="int">
+			<column name="item2" />
+		</property>
+		<property name="item3" type="int">
+			<column name="item3" />
+		</property>
+		<property name="item4" type="int">
+			<column name="item4" />
+		</property>
+		<property name="item5" type="int">
+			<column name="item5" />
+		</property>
+		<property name="item6" type="int">
+			<column name="item6" />
+		</property>
+		<property name="item7" type="int">
+			<column name="item7" />
+		</property>
+		
+	</class>
+</hibernate-mapping>
