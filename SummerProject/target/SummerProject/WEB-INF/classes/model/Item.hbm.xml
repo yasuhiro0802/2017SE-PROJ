@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.Item" table="item">
+		<id name="id" type="int">
+			<column name="id" />
+			
+		</id>
+		<property name="category" type="int">
+			<column name="category" />
+		</property>
+		<property name="blood" type="double">
+			<column name="blood" />
+		</property>
+		<property name="attack" type="double">
+			<column name="attack" />
+		</property>
+		<property name="speed" type="double">
+			<column name="speed" />
+		</property>
+		<property name="coin" type="int">
+			<column name="coin" />
+		</property>
+		<property name="description" type="java.lang.String">
+			<column name="description" />
+		</property>
+		<property name="characterid" type="int">
+			<column name="characterid" />
+		</property>
+		<property name="path" type="java.lang.String">
+			<column name="path" />
+		</property>
+
+	</class>
+</hibernate-mapping>

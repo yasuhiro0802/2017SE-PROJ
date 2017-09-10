@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Struts2 DTD -->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.action.excludePattern" value="/websocket" />
+	
+	<package name="process" extends="struts-default">
+		
+		<!-- 跳转到登陆界面 -->
+		<action name="loginpage">
+			<result name="success">/summerproject/jsp/LoginPage.jsp</result>
+		</action>
+		
+		<!-- 跳转到注册界面 -->
+		<action name="signuppage">
+			<result name="success">/summerproject/jsp/SignUp.jsp</result>
+		</action>
+		
+		<!-- 跳转到游戏商城界面 -->
+		<action name="shop" class="action.GetItems">
+			<result name="success">/summerproject/jsp/Shop.jsp</result>
+		</action>
+		
+		<!-- 跳转到单人游戏界面 -->
+		<action name="single_player" class="action.GetItems">
+			<result name="success">/summerproject/jsp/SinglePlayerRoom.jsp</result>
+		</action>
+		
+		<!-- 跳转到多人游戏界面 -->
+		<action name="team_player" class="action.GetItems">
+			<result name="success">/summerproject/jsp/CharacterSelect.jsp</result>
+		</action>
+		
+		<!-- 跳转到排位游戏界面 -->
+		<action name="rank_player" class="action.GetItems">
+			<result name="success">/summerproject/jsp/RankCharacterSelect.jsp</result>
+		</action>
+		
+		<!-- 跳转到重新登录界面 -->
+		<action name="login_again">
+			<result name="success">/summerproject/jsp/LoginAgain.jsp</result>
+		</action>
+		
+		<!-- 跳转到主界面 -->
+		<action name="returnhome">
+			<result name="success">/summerproject/jsp/GameMain.jsp</result>
+		</action>
+		
+		<!-- 跳转到介绍 -->
+		<action name="detail">
+			<result name="success">/summerproject/jsp/Intro.jsp</result>
+		</action>
+		
+		<!-- 登录操作 -->
+		<action name="homepage" class="action.login">
+			<result name="success">/summerproject/jsp/GameMain.jsp</result>
+			<result name="input">/summerproject/jsp/LoginPage.jsp</result>
+			<result name="login" type="redirect">allUserPro</result>
+		</action>
+		
+		<!-- 登出操作 -->
+		<action name="logout" class="action.login" method="logout">
+			<result name="success">/summerproject/jsp/LoginPage.jsp</result>
+		</action>
+		
+		<!-- 注册操作 -->
+		<action name="register" class="action.Register">
+			<result name="success">/summerproject/jsp/SignUpSuccess.jsp</result>
+			<result name="input">/summerproject/jsp/SignUp.jsp</result>
+		</action>
+		
+		<!-- 购买操作 -->
+		<action name="buy" class="action.Buy">
+			<result name="success">/summerproject/jsp/ShopResult.jsp</result>
+			<result name="error">/summerproject/jsp/ShopResult.jsp</result>
+		</action>
+		
+		<!-- 单人游戏结束并结算操作 -->
+		<action name="single_result" class="action.UpdateGamedata">
+			<result name="success">/summerproject/game/index.jsp</result>
+		</action>
+		
+		<action name="single_over" >
+			<result name="success">/summerproject/jsp/SingleOver.jsp</result>
+		</action>
+		
+		
+		<!-- 多人游戏结束并结算操作 -->
+		<action name="rank_result" class="action.UpdateGamedata" method="UpdateRank">
+			<result name='success'>/summerproject/rank/index.jsp</result>
+		</action>
+		
+		<action name="rank_over" class="action.UpdateGamedata" method="GetMode">
+			<result name='rank'>/summerproject/jsp/RankOver.jsp</result>
+			<result name='team'>/summerproject/jsp/TeamOver.jsp</result>
+		</action>
+		
+		<action name="set_rank_setting" class="action.set_rank_setting">
+			<result name="success">/summerproject/rank/index.jsp</result>
+		</action>
+		
+		<action name="get_rank_setting" class="action.get_rank_setting">
+			<result name='success'>/summerproject/rank/index.jsp</result>
+		</action>
+		
+		<!-- 组队模式选择角色 -->
+		<action name="set_character" class="action.character" method="set_character">
+			<result name="success" type="redirect">roomList</result>
+		</action>
+		
+		<!-- 排位模式选择角色 -->
+		<action name="set_rank_character" class="action.character" method="set_character">
+			<result name="success" type="redirect">rankWait</result>
+		</action>
+		
+		
+		<action name="roomList">
+			<result name="success">/summerproject/jsp/RoomList.jsp</result>
+		</action>
+		
+		<action name="rankWait" class="action.RoomAction" method="addRank">
+			<result name="wait" type="redirect">rankwait</result>
+			<result name="success">/summerproject/jsp/RankStart.jsp</result>
+		</action>
+		
+		<action name="rankwait">
+			<result name="success">/summerproject/jsp/RankWait.jsp</result>
+		</action>
+		
+		<action name="quitRank" class="action.RoomAction" method="quit">
+			<result name="success" type="redirect">returnhome</result>
+		</action>
+	
+		
+		<!-- 游戏中获取题目 -->
+		<action name="get_question" class="action.SendQuestion">
+			<result name="success">/summerproject/game/index.jsp</result>
+		</action>
+		
+		
+		<!-- game get user choice by this action 单人模式 -->
+		<action name="get_choice" class="action.character" method="execute">
+			<result name="success">/summerproject/game/index.jsp</result>
+		</action>
+		<!-- web set user choice by this action -->
+		<action name="set_choice" class="action.character" method="set_choice">
+			<result name="success">/summerproject/game/index.jsp</result>
+		</action>
+
+		
+		<!-- jump to the test page of WebSocket here are test methods -->
+		
+		
+		<action name="selectroom">
+			<result name="success">/summerproject/jsp/RoomList.jsp</result>
+		</action>
+		<action name="prepare" class="action.RoomPrepare">
+			<result name="success" type="redirect">refresh</result>
+		</action>
+		<action name="refresh" class="action.RoomPrepare" method="refresh">
+			<result name="success">/summerproject/jsp/RoomPrepare.jsp</result>
+		</action>
+		<action name="quitRoom" class="action.RoomAction" method="quit">
+			<result name="success" type="redirect">selectroom</result>
+		</action>
+		<action name="start" class="action.RoomPrepare" method="start">
+			<result name="success" type="redirect">refresh</result>
+		</action>
+		
+		<action name="roomtest" class="action.set_rank_setting" method="roomtest">
+			<result name="success">/summerproject/rank/index.jsp</result>
+		</action>
+		
+		
+		<!-- Admin -->
+		<action name="allUserPro" class="action.AllUsersAction">
+			<result name="success">/summerproject/jsp/admin/user.jsp</result>
+		</action>
+		
+		<action name="allDataPro" class="action.AllUsersAction">
+			<result name="success">/summerproject/jsp/admin/user.jsp</result>
+		</action>
+		
+		<action name="allTaskPro" class="action.AllQuestionAction">
+			<result name="success">/summerproject/jsp/admin/Question.jsp</result>
+		</action>
+		
+		<action name="addUserPro" class="action.AddUserAction">
+			<result name="success">/summerproject/jsp/admin/user.jsp</result>
+		</action>
+		<action name="addQuesPro" class="action.AddQuesAction">
+			<result name="success">/summerproject/jsp/admin/Question.jsp</result>
+		</action>
+		
+		
+		<action name="updateUserPro" class="action.UpdateUserAction">
+			<result name="success">/summerproject/jsp/admin/user.jsp</result>
+		</action>
+		<action name="deleteUserPro" class="action.DeleteUserAction">
+			<result name="success">/summerproject/jsp/admin/user.jsp</result>
+		</action>
+		
+
+		<action name="*">
+			<result>/{1}.jsp</result>
+		</action>
+	</package>
+</struts>
