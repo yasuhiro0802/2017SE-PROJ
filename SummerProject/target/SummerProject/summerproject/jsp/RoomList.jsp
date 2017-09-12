@@ -53,7 +53,7 @@
       
      <%
      for(int x = 0; x < roomList.size(); x++){
-    	 if(!roomList.get(x).getStatus().equals("empty")){
+    	 if(roomList.get(x).getStatus().equals("wait")){
      %>
       <div class="span3">
         <div class="photographer">

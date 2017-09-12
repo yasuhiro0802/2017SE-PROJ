@@ -155,6 +155,9 @@ public class AppServiceImpl implements AppService {
 		gamedataDao.update(gamedata);
 	}
 	
+	public List<GameData> getAllGameData(){
+		return gamedataDao.getAllGameDatas();
+	}
 	/*
 	 * item
 	 */

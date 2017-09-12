@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="model.Question"%>
+<%@ page import="model.GameData"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,9 +22,9 @@
 
 <body>
 	<%
-		ArrayList<Question> userList = new ArrayList<Question>();
-			if (request.getAttribute("questions") != null) {
-		userList = (ArrayList<Question>) request.getAttribute("questions");
+		ArrayList<GameData> userList = new ArrayList<GameData>();
+			if (request.getAttribute("datas") != null) {
+		userList = (ArrayList<GameData>) request.getAttribute("datas");
 			}
 	%>
 	<div id="wrapper">
@@ -39,13 +39,13 @@
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
-					<li><a href="allUserPro" class="active"><i
-							class="fa fa-user fa-fw"></i> Users</a></li>
+					<li><a href="allUserPro"><i
+							class="fa fa-user fa-fw"></i>Manage  Users</a></li>
 					<li><a href="allDataPro"><i class="fa fa-book fa-fw"></i>
 							Manage GameData</a></li>
 					<li><a href="allTaskPro"><i class="fa fa-reorder fa-fw"></i>
 							Manage Questions</a></li>
-					<li><a href="allItemsPro"><i class="fa fa-table fa-fw"></i> 
+					<li><a href="allItemPro"><i class="fa fa-table fa-fw"></i> 
 							Manage Items</a></li>
 					<!--<li><a href="allItemsPro"><i class="fa fa-table fa-fw"></i> 
 							Question Pool</a></li>  -->
@@ -59,19 +59,14 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Questions</h1>
+					<h1 class="page-header">Gamedatas</h1>
 				</div>
 			</div>
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">
-						<a href="/SummerProject/summerproject/jsp/admin/addQuestion.jsp">
-						<i class="fa fa-reorder fa-fw"></i>
-							Add Questions</a>
-							
-						</div>
+
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<div class="dataTable_wrapper">
@@ -80,33 +75,45 @@
 									<thead>
 										<tr>
 										    <th>ID</th>
-											<th>Question</th>
-											<th>Options</th>
-											<th>Subject</th>
-											<th>Difficulty</th>
+											<th>rankpoint</th>
+											<th>coin</th>
+											<th>singlegame</th>
+											<th>singlewin</th>
+											<th>rankgame</th>
+											<th>rankwin</th>
+											<th>teamgame</th>
+											<th>teamwin</th>
+											<th>item1</th>
+											<th>item2</th>
+											<th>item3</th>
+											<th>item4</th>
+											<th>item5</th>
+											<th>item6</th>
+											<th>item7</th>
 										</tr>
 									</thead>
 									<tbody>
 										<%
 											for (int i = 0; i < userList.size(); i++) {
-																				Question user = userList.get(i);
+												GameData user = userList.get(i);
 										%>
 										<tr>
 										    <td><%=user.getId()%></td>
-											<td><%=user.getQuestion()%></td>
-											<td>
-												<button class="btn btn-default detail" type="button"
-													data-id="<%=user.getId()%>"
-													data-a="<%=user.getAnswerA()%>"
-													data-b="<%=user.getAnswerB()%>"
-													data-c="<%=user.getAnswerC()%>"
-													data-d="<%=user.getAnswerD()%>">
-													
-													<i class="fa fa-info"></i>
-												</button>
-											</td>
-											<td><%=user.getSubject()%></td>
-											<td><%=user.getDifficulty()%></td>
+											<td><%=user.getRankpoint()%></td>
+											<td><%=user.getCoin()%></td>
+											<td><%=user.getSinglegame()%></td>
+											<td><%=user.getSinglewin()%></td>
+											<td><%=user.getRankgame()%></td>
+											<td><%=user.getRankwin()%></td>
+											<td><%=user.getTeamgame()%></td>
+											<td><%=user.getTeamwin()%></td>
+											<td><%=user.getItem1()%></td>
+											<td><%=user.getItem2()%></td>
+											<td><%=user.getItem3()%></td>
+											<td><%=user.getItem4()%></td>
+											<td><%=user.getItem5()%></td>
+											<td><%=user.getItem6()%></td>
+											<td><%=user.getItem7()%></td>
 										</tr>
 										<%
 											}
@@ -211,7 +218,7 @@
 	<script src="<%=path%>/summerproject/js/admin/bookstore.js"></script>
 	<script src="<%=path%>/summerproject/js/admin/bootbox.min.js"></script>
 
-	<script src="<%=path%>/summerproject/js/admin/question.js"></script>
+	<script src="<%=path%>/summerproject/js/admin/gamedata.js"></script>
 
 	<script>
 		$(document).ready(function() {

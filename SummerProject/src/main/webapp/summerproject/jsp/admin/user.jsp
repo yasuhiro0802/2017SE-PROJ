@@ -45,7 +45,7 @@
 							Manage GameData</a></li>
 					<li><a href="allTaskPro"><i class="fa fa-reorder fa-fw"></i>
 							Manage Questions</a></li>
-					<li><a href="allItemsPro"><i class="fa fa-table fa-fw"></i> 
+					<li><a href="allItemPro"><i class="fa fa-table fa-fw"></i> 
 							Manage Items</a></li>
 					<!--<li><a href="allItemsPro"><i class="fa fa-table fa-fw"></i> 
 							Question Pool</a></li>  -->

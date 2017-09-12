@@ -59,6 +59,7 @@ public interface AppService {
 	
 	public void updateGamedata(GameData gamedata);
 	
+	public List<GameData> getAllGameData();
 	/*
 	 * item
 	 */
