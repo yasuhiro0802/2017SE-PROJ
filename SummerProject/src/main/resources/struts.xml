@@ -20,10 +20,6 @@
 			<result name="success">/summerproject/jsp/SignUp.jsp</result>
 		</action>
 		
-		<action name="detail">
-			<result name="success">/summerproject/jsp/Intro.jsp</result>
-		</action>
-		
 		<!-- 跳转到游戏商城界面 -->
 		<action name="shop" class="action.GetItems">
 			<result name="success">/summerproject/jsp/Shop.jsp</result>
@@ -35,8 +31,13 @@
 		</action>
 		
 		<!-- 跳转到多人游戏界面 -->
-		<action name="team_player" >
-			<result name="success">/summerproject/jsp/RoomList.jsp</result>
+		<action name="team_player" class="action.GetItems">
+			<result name="success">/summerproject/jsp/CharacterSelect.jsp</result>
+		</action>
+		
+		<!-- 跳转到排位游戏界面 -->
+		<action name="rank_player" class="action.GetItems">
+			<result name="success">/summerproject/jsp/RankCharacterSelect.jsp</result>
 		</action>
 		
 		<!-- 跳转到重新登录界面 -->
@@ -47,6 +48,11 @@
 		<!-- 跳转到主界面 -->
 		<action name="returnhome">
 			<result name="success">/summerproject/jsp/GameMain.jsp</result>
+		</action>
+		
+		<!-- 跳转到介绍 -->
+		<action name="detail">
+			<result name="success">/summerproject/jsp/Intro.jsp</result>
 		</action>
 		
 		<!-- 登录操作 -->
@@ -88,8 +94,9 @@
 			<result name='success'>/summerproject/rank/index.jsp</result>
 		</action>
 		
-		<action name="rank_over">
-			<result name='success'>/summerproject/jsp/RankOver.jsp</result>
+		<action name="rank_over" class="action.UpdateGamedata" method="GetMode">
+			<result name='rank'>/summerproject/jsp/RankOver.jsp</result>
+			<result name='team'>/summerproject/jsp/TeamOver.jsp</result>
 		</action>
 		
 		<action name="set_rank_setting" class="action.set_rank_setting">
@@ -100,7 +107,33 @@
 			<result name='success'>/summerproject/rank/index.jsp</result>
 		</action>
 		
+		<!-- 组队模式选择角色 -->
+		<action name="set_character" class="action.character" method="set_character">
+			<result name="success" type="redirect">roomList</result>
+		</action>
 		
+		<!-- 排位模式选择角色 -->
+		<action name="set_rank_character" class="action.character" method="set_character">
+			<result name="success" type="redirect">rankWait</result>
+		</action>
+		
+		
+		<action name="roomList">
+			<result name="success">/summerproject/jsp/RoomList.jsp</result>
+		</action>
+		
+		<action name="rankWait" class="action.RoomAction" method="addRank">
+			<result name="wait" type="redirect">rankwait</result>
+			<result name="success">/summerproject/jsp/RankStart.jsp</result>
+		</action>
+		
+		<action name="rankwait">
+			<result name="success">/summerproject/jsp/RankWait.jsp</result>
+		</action>
+		
+		<action name="quitRank" class="action.RoomAction" method="quit">
+			<result name="success" type="redirect">returnhome</result>
+		</action>
 	
 		
 		<!-- 游戏中获取题目 -->
@@ -109,7 +142,7 @@
 		</action>
 		
 		
-		<!-- game get user choice by this action -->
+		<!-- game get user choice by this action 单人模式 -->
 		<action name="get_choice" class="action.character" method="execute">
 			<result name="success">/summerproject/game/index.jsp</result>
 		</action>
@@ -117,26 +150,25 @@
 		<action name="set_choice" class="action.character" method="set_choice">
 			<result name="success">/summerproject/game/index.jsp</result>
 		</action>
+
 		
 		<!-- jump to the test page of WebSocket here are test methods -->
 		
-		<action name="socket" class="room">
-			<result name="success">/summerproject/jsp/sockettest.jsp</result>
-		</action>
+		
 		<action name="selectroom">
-			<result name="success">/summerproject/jsp/RoomSelect.jsp</result>
+			<result name="success">/summerproject/jsp/RoomList.jsp</result>
 		</action>
-		<action name="prepare" class="roomprepare">
+		<action name="prepare" class="action.RoomPrepare">
 			<result name="success" type="redirect">refresh</result>
 		</action>
-		<action name="refresh" class="roomprepare" method="refresh">
+		<action name="refresh" class="action.RoomPrepare" method="refresh">
 			<result name="success">/summerproject/jsp/RoomPrepare.jsp</result>
 		</action>
 		<action name="quitRoom" class="action.RoomAction" method="quit">
 			<result name="success" type="redirect">selectroom</result>
 		</action>
-		<action name="start" class="roomprepare" method="start">
-			<result name="success">/summerproject/jsp/RoomPrepare.jsp</result>
+		<action name="start" class="action.RoomPrepare" method="start">
+			<result name="success" type="redirect">refresh</result>
 		</action>
 		
 		<action name="roomtest" class="action.set_rank_setting" method="roomtest">
@@ -144,8 +176,16 @@
 		</action>
 		
 		
-		<!-- Admin -->
-		<action name="allUserPro" class="action.AllUsersAction">
+		<!-- Admin -->		
+		<!-- 912 -->
+		<action name="updateUserPro" class="action.UpdateUserAction">
+			<result name="success">/summerproject/jsp/admin/user.jsp</result>
+		</action>
+		<action name="deleteUserPro" class="action.DeleteUserAction">
+			<result name="success">/summerproject/jsp/admin/user.jsp</result>
+		</action>
+		
+				<action name="allUserPro" class="action.AllUsersAction">
 			<result name="success">/summerproject/jsp/admin/user.jsp</result>
 		</action>
 		
@@ -174,8 +214,9 @@
 		<action name="deleteUserPro" class="action.DeleteUserAction">
 			<result name="success">/summerproject/jsp/admin/user.jsp</result>
 		</action>
+		<!-- 912 -->
 		
-
+		
 		<action name="*">
 			<result>/{1}.jsp</result>
 		</action>

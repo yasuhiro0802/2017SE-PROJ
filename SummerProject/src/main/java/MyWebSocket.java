@@ -13,7 +13,7 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import model.GameData;
 import action.RoomAction;
-
+import model.Room;
 
 @ServerEndpoint(value="/websocket",configurator=GetHttpSessionConfigurator.class)
 public class MyWebSocket{
@@ -120,6 +120,12 @@ public class MyWebSocket{
     public void onError(Session session, Throwable error){
         System.out.println("error occur");
         error.printStackTrace();
+        RoomAction roomAction = new RoomAction();
+    	List<Room> roomList = roomAction.getRoomList();
+    	roomList.get(roomId).setStatus("empty");
+    	roomList.get(roomId).setUserid_1(0);
+    	roomList.get(roomId).setUserid_2(0);
+    	
     }
      
 
