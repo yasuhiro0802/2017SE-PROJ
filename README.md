@@ -5,30 +5,30 @@ An online game created by 彭浩伦(Alan Peng), 高仓靖博(Yasuhiro Takakura) 
 ## Single Mode
 single mode - sign in & profile & online store (buy character) 
 
-![](../images/single1.gif)
+![](https://github.com/yasuhiro0802/2017SE-PROJ/blob/master/images/single1.gif)
 
 single mode - game  
 
-![](../images/single2.gif)
+![](https://github.com/yasuhiro0802/2017SE-PROJ/blob/master/images/single2.gif)
 
 single mode - attack  
 
-![](../images/single3.gif)
+![](https://github.com/yasuhiro0802/2017SE-PROJ/blob/master/images/single3.gif)
 
 single mode - gameover  
 
-![](../images/single4.gif)
+![](https://github.com/yasuhiro0802/2017SE-PROJ/blob/master/images/single4.gif)
 
 ## Online Mode
 
 online mode - online room & select character  
 
-![](../images/online1.gif)
+![](https://github.com/yasuhiro0802/2017SE-PROJ/blob/master/images/online1.gif)
 
 online mode - game  
 
-![](../images/online2.gif)
+![](https://github.com/yasuhiro0802/2017SE-PROJ/blob/master/images/online2.gif)
 
 online mode - gameover  
 
-![](../images/online3.gif)
+![](https://github.com/yasuhiro0802/2017SE-PROJ/blob/master/images/online3.gif)
